@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>W.O.I.N. Character Sheet</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="main.js"></script>
+</head>
+<body>
+  <header>
+    <h2>W.O.I.N. Character Sheet</h2>
+    <div class="storage-mode">
+      <label>
+        <input type="radio" name="storageMode" value="scene" checked>
+        Scene Sheet
+      </label>
+      <label>
+        <input type="radio" name="storageMode" value="token">
+        Token Sheet
+      </label>
+    </div>
+    <div id="token-warning" class="warning hidden">
+      No token selected. Select a token to use token-linked storage.
+    </div>
+  </header>
+
+  <section id="identity">
+    <div class="field-row">
+      <label for="name">Name</label>
+      <input id="name" type="text" placeholder="Character name">
+    </div>
+    <div class="field-row">
+      <label for="species">Species</label>
+      <input id="species" type="text">
+    </div>
+    <div class="field-row">
+      <label for="career">Career</label>
+      <input id="career" type="text">
+    </div>
+    <div class="field-row">
+      <label for="grade">Grade</label>
+      <input id="grade" type="number" min="0">
+    </div>
+  </section>
+
+  <section id="attributes">
+    <h3>Attributes</h3>
+    <div class="grid">
+      <div class="attr">
+        <label for="str">STR</label>
+        <input id="str" type="number" min="0">
+        <span class="dice" data-for="str">0d6</span>
+      </div>
+      <div class="attr">
+        <label for="agi">AGI</label>
+        <input id="agi" type="number" min="0">
+        <span class="dice" data-for="agi">0d6</span>
+      </div>
+      <div class="attr">
+        <label for="end">END</label>
+        <input id="end" type="number" min="0">
+        <span class="dice" data-for="end">0d6</span>
+      </div>
+      <div class="attr">
+        <label for="int">INT</label>
+        <input id="int" type="number" min="0">
+        <span class="dice" data-for="int">0d6</span>
+      </div>
+      <div class="attr">
+        <label for="log">LOG</label>
+        <input id="log" type="number" min="0">
+        <span class="dice" data-for="log">0d6</span>
+      </div>
+      <div class="attr">
+        <label for="wil">WIL</label>
+        <input id="wil" type="number" min="0">
+        <span class="dice" data-for="wil">0d6</span>
+      </div>
+      <div class="attr">
+        <label for="cha">CHA</label>
+        <input id="cha" type="number" min="0">
+        <span class="dice" data-for="cha">0d6</span>
+      </div>
+      <div class="attr">
+        <label for="luc">LUC</label>
+        <input id="luc" type="number" min="0">
+        <span class="dice" data-for="luc">0d6</span>
+      </div>
+      <div class="attr">
+        <label for="rep">REP</label>
+        <input id="rep" type="number" min="0">
+        <span class="dice" data-for="rep">0d6</span>
+      </div>
+      <div class="attr">
+        <label for="pow">POW</label>
+        <input id="pow" type="number" min="0">
+        <span class="dice" data-for="pow">0d6</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="derived">
+    <h3>Derived</h3>
+    <div class="grid">
+      <div class="field-row">
+        <label for="health">HEALTH</label>
+        <input id="health" type="number" min="0">
+      </div>
+      <div class="field-row">
+        <label for="soak">SOAK</label>
+        <input id="soak" type="number" min="0">
+      </div>
+      <div class="field-row">
+        <label for="initiative">INITIATIVE (AGI + LOG)</label>
+        <input id="initiative" type="number" min="0" readonly>
+      </div>
+    </div>
+  </section>
+
+  <section id="defenses">
+    <h3>Defenses</h3>
+    <div class="grid">
+      <div class="field-row">
+        <label for="melee">Melee</label>
+        <input id="melee" type="number" min="0">
+      </div>
+      <div class="field-row">
+        <label for="ranged">Ranged</label>
+        <input id="ranged" type="number" min="0">
+      </div>
+      <div class="field-row">
+        <label for="mental">Mental</label>
+        <input id="mental" type="number" min="0">
+      </div>
+      <div class="field-row">
+        <label for="vital">Vital</label>
+        <input id="vital" type="number" min="0">
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h3>Skills</h3>
+    <textarea id="skills-text" placeholder="Skill name (dice pool), notes..."></textarea>
+  </section>
+
+  <section id="exploits">
+    <h3>Exploits</h3>
+    <textarea id="exploits-text" placeholder="Species, career, universal, and other exploits..."></textarea>
+  </section>
+
+  <section id="gear">
+    <h3>Gear</h3>
+    <textarea id="gear-text" placeholder="Weapons, armor, equipment, credits..."></textarea>
+  </section>
+
+  <footer>
+    <button id="save">Save</button>
+    <span id="status" class="status"></span>
+  </footer>
+</body>
+</html>
