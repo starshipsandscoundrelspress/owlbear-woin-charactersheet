@@ -1,11 +1,13 @@
 {
-  "id": "sas.woin.sheet",
   "name": "W.O.I.N. Character Sheet",
   "version": "0.0.1",
+  "manifest_version": 1,
   "author": "Theodore",
-  "description": "A What's OLD is NEW character sheet for Owlbear Rodeo 2.0",
-  "icon": "/icon.svg",
-  "entry": "/index.html",
-  "type": "panel",
-  "permissions": ["SCENE", "ITEM"]
+  "action": {
+    "title": "W.O.I.N. Character Sheet",
+    "icon": "/icon.svg",
+    "popover": "/",
+    "height": 600,
+    "width": 400
+  }
 }
