@@ -1,4 +1,4 @@
-import OBR from "https://unpkg.com/@owlbear-rodeo/sdk@2.0.0/obr.esm.js";
+import OBR from "https://cdn.jsdelivr.net/npm/@owlbear-rodeo/sdk@2.0.0/+esm";
 import "./style.css";
 
 const META_KEY = "theodore.woin.sheet";
