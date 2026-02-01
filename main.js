@@ -111,9 +111,9 @@ function showStatus(msg, timeout = 1200) {
   }, timeout);
 }
 
-function addAttackRow(event) {
-  if (event) event.preventDefault();
+function addAttackRow() {
   const tbody = document.getElementById("attacks-table-body");
+  if (!tbody) return console.error("Attacks table body not found");
   const newRow = document.createElement("tr");
   newRow.innerHTML = `
     <td><input type="text" class="weapon" /></td>
@@ -125,9 +125,9 @@ function addAttackRow(event) {
   tbody.appendChild(newRow);
 }
 
-function addLifePathRow(event) {
-  if (event) event.preventDefault();
+function addLifePathRow() {
   const tbody = document.getElementById("lifepath-table-body");
+  if (!tbody) return console.error("Life path table body not found");
   const newRow = document.createElement("tr");
   newRow.innerHTML = `
     <td><input type="text" class="paths" /></td>
@@ -138,15 +138,19 @@ function addLifePathRow(event) {
 }
 
 function setupTableListeners() {
-  const addAttackBtn = document.getElementById("add-attack-row");
-  const addLifePathBtn = document.getElementById("add-lifepath-row");
-  
-  if (addAttackBtn) {
-    addAttackBtn.addEventListener("click", addAttackRow);
-  }
-  if (addLifePathBtn) {
-    addLifePathBtn.addEventListener("click", addLifePathRow);
-  }
+  // Use event delegation on document for more reliable button handling
+  document.addEventListener("click", (event) => {
+    if (event.target.id === "add-attack-row") {
+      event.preventDefault();
+      addAttackRow();
+      console.log("Attack row added");
+    }
+    if (event.target.id === "add-lifepath-row") {
+      event.preventDefault();
+      addLifePathRow();
+      console.log("Life path row added");
+    }
+  });
 }
 
 function setupFormListeners() {
