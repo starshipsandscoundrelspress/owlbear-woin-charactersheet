@@ -1,24 +1,11 @@
 import "./style.css";
 
-let OBR = null;
-
-// Try to load OBR, but don't fail if it can't
-try {
-  const OBRModule = await import("https://cdn.jsdelivr.net/npm/@owlbear-rodeo/sdk@2.0.0/+esm").catch(err => {
-    console.warn("OBR SDK failed to load:", err);
-    return null;
-  });
-  OBR = OBRModule?.default || OBRModule;
-} catch (err) {
-  console.warn("OBR SDK not available:", err);
-}
-
 const META_KEY = "theodore.woin.sheet";
 
 const FIELDS = [
   "name",
   "species",
-  "career",
+  "descriptor",
   "grade",
 
   "str",
@@ -45,19 +32,31 @@ const FIELDS = [
   "health",
   "soak",
   "initiative",
+  "perception",
+  "carry",
+  "actions",
+  "natural_damage",
+  "pow_points",
 
   "melee",
   "ranged",
   "mental",
   "vital",
 
+  "speed",
+  "climb",
+  "swim",
+  "jump",
+
   "skills-text",
   "exploits-text",
   "gear-text",
+  "experience_points",
+  "wealth",
+
+  "current_age",
 ];
 
-let currentStorageMode = "scene";
-let selectedTokenId = null;
 let isReady = false;
 
 function getFieldValue(id) {
@@ -83,30 +82,13 @@ function applyData(data = {}) {
   updateDerived();
 }
 
-async function loadSceneData() {
-  const meta = await OBR.scene.getMetadata();
-  applyData(meta[META_KEY] || {});
+function loadData() {
+  const saved = localStorage.getItem(META_KEY);
+  applyData(saved ? JSON.parse(saved) : {});
 }
 
-async function saveSceneData() {
-  await OBR.scene.setMetadata({ [META_KEY]: collectData() });
-}
-
-async function loadTokenData() {
-  if (!selectedTokenId) return applyData({});
-  const items = await OBR.scene.items.getItems([selectedTokenId]);
-  const token = items[0];
-  applyData(token?.metadata?.[META_KEY] || {});
-}
-
-async function saveTokenData() {
-  if (!selectedTokenId) return;
-  const data = collectData();
-  await OBR.scene.items.updateItems([selectedTokenId], (items) => {
-    for (const item of items) {
-      item.metadata = { ...(item.metadata || {}), [META_KEY]: data };
-    }
-  });
+function saveData() {
+  localStorage.setItem(META_KEY, JSON.stringify(collectData()));
 }
 
 function updateDerived() {
@@ -190,91 +172,36 @@ function setupFormListeners() {
     });
   });
 
-  document.getElementById("save").addEventListener("click", async () => {
-    if (!isReady) return;
+  document.getElementById("save").addEventListener("click", () => {
     try {
-      if (currentStorageMode === "scene") {
-        await saveSceneData();
-        showStatus("Saved to scene");
-      } else {
-        if (!selectedTokenId) return showStatus("No token selected");
-        await saveTokenData();
-        showStatus("Saved to token");
-      }
-    } catch {
+      saveData();
+      showStatus("Saved successfully");
+    } catch (err) {
+      console.error("Save error:", err);
       showStatus("Error saving");
     }
   });
 
   document.querySelectorAll('input[name="storageMode"]').forEach((r) => {
-    r.addEventListener("change", async () => {
-      currentStorageMode = r.value;
-      await refreshStorageMode();
+    r.addEventListener("change", () => {
+      // Storage mode is no longer used, but keep the listener for compatibility
     });
   });
 
   setupTableListeners();
 }
 
-async function refreshStorageMode() {
-  const warn = document.getElementById("token-warning");
-
-  if (currentStorageMode === "scene") {
-    warn.classList.add("hidden");
-    return loadSceneData();
-  }
-
-  if (!selectedTokenId) {
-    warn.classList.remove("hidden");
-    return applyData({});
-  }
-
-  warn.classList.add("hidden");
-  return loadTokenData();
-}
-
-async function handleSelectionChange() {
-  const selection = await OBR.scene.items.getSelection();
-  selectedTokenId = selection[0] || null;
-  await refreshStorageMode();
-}
-
-function setupOBRListeners() {
-  if (!OBR) return console.warn("OBR not available, skipping OBR listeners");
-  
-  OBR.scene.items.onSelectionChange(handleSelectionChange);
-
-  OBR.scene.items.onChange(async () => {
-    if (!selectedTokenId) return;
-    const items = await OBR.scene.items.getItems([selectedTokenId]);
-    if (!items[0]) {
-      selectedTokenId = null;
-      await refreshStorageMode();
-    }
-  });
-}
-
-async function initializeApp() {
+function initializeApp() {
   isReady = true;
+  loadData();
   setupFormListeners();
-  
-  if (OBR) {
-    setupOBRListeners();
-    await handleSelectionChange();
-  } else {
-    console.warn("App running in standalone mode without OBR");
-  }
+  console.log("App initialized in standalone mode");
 }
 
-if (OBR && OBR.onReady) {
-  OBR.onReady(initializeApp);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initializeApp);
 } else {
-  // If OBR isn't available, initialize immediately when DOM is ready
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initializeApp);
-  } else {
-    initializeApp();
-  }
+  initializeApp();
 }
 
 console.log("W.O.I.N. Character Sheet loaded");
