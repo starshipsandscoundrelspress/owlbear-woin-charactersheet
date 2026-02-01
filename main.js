@@ -1,4 +1,5 @@
 import OBR from "https://unpkg.com/@owlbear-rodeo/sdk@2.0.0/obr.esm.js";
+import "./style.css";
 
 const META_KEY = "theodore.woin.sheet";
 
@@ -201,3 +202,5 @@ OBR.onReady(async () => {
   setupOBRListeners();
   await handleSelectionChange();
 });
+
+console.log("W.O.I.N. Character Sheet loaded");
