@@ -93,6 +93,14 @@ textarea {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.derived-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.movement-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .attr {
   display: flex;
   flex-direction: column;

@@ -36,6 +36,10 @@
         <input id="species" type="text" />
       </div>
       <div class="field-row">
+        <label>Descriptor</label>
+        <input id="descriptor" type="text" />
+      </div>
+      <div class="field-row">
         <label>Grade</label>
         <input id="grade" type="number" min="0" />
       </div>
@@ -109,18 +113,30 @@
 
     <section id="derived">
       <h3>Derived</h3>
-      <div class="grid">
+      <div class="grid derived-grid">
         <div class="field-row">
-          <label>HEALTH</label>
-          <input id="health" type="number" min="0" />
+          <label>HEALTH</label><input id="health" type="number" min="0" />
         </div>
         <div class="field-row">
-          <label>SOAK</label>
-          <input id="soak" type="number" min="0" />
+          <label>SOAK</label><input id="soak" type="number" min="0" />
         </div>
         <div class="field-row">
-          <label>INITIATIVE</label>
-          <input id="initiative" type="text" />
+          <label>INITIATIVE</label><input id="initiative" type="text" />
+        </div>
+        <div class="field-row">
+          <label>PERCEPTION</label><input id="perception" type="text" />
+        </div>
+        <div class="field-row">
+          <label>CARRY</label><input id="carry" type="text" />
+        </div>
+        <div class="field-row">
+          <label>ACTIONS</label><input id="actions" type="number" min="0" />
+        </div>
+        <div class="field-row">
+          <label>NAT Damage</label><input id="natural_damage" type="text" />
+        </div>
+        <div class="field-row">
+          <label>POW POINTS</label><input id="pow_points" type="number" min="0" />
         </div>
       </div>
     </section>
@@ -139,6 +155,24 @@
         </div>
         <div class="field-row">
           <label>Vital</label><input id="vital" type="number" />
+        </div>
+      </div>
+    </section>
+
+    <section id="movement">
+      <h3>Movement</h3>
+      <div class="grid movement-grid">
+        <div class="field-row">
+          <label>Walk</label><input id="speed" type="number" />
+        </div>
+        <div class="field-row">
+          <label>Run</label><input id="climb" type="number" />
+        </div>
+        <div class="field-row">
+          <label>Swim</label><input id="swim" type="number" />
+        </div>
+        <div class="field-row">
+          <label>Fly</label><input id="jump" type="number" />
         </div>
       </div>
     </section>
@@ -187,6 +221,9 @@
     <section id="gear">
       <h3>Gear</h3>
       <textarea id="gear-text"></textarea>
+      <div class="field-row">
+        <label>Wealth</label><input id="wealth" type="text" />
+      </div>
     </section>
 
     <section id="lifepath">
