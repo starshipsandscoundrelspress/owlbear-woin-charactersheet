@@ -1,13 +1,14 @@
 {
+  "id": "owlbear-woin-charactersheet",
   "name": "W.O.I.N. Character Sheet",
   "version": "1.0.0",
-  "manifest_version": 1,
-  "author": "Starships & Scoundrels Press",
-  "action": {
-    "title": "W.O.I.N. Character Sheet",
-    "icon": "/icon.svg",
-    "popover": "/",
-    "height": 1200,
-    "width": 800
+  "description": "A What's OLD is NEW character sheet for Owlbear Rodeo",
+  "type": "panel",
+  "entry": "/index.html",
+  "icon": "/icon.png",
+  "permissions": [],
+  "panel": {
+    "width": 700,
+    "height": 1200
   }
 }
