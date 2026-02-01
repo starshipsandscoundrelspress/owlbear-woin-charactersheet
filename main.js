@@ -111,7 +111,8 @@ function showStatus(msg, timeout = 1200) {
   }, timeout);
 }
 
-function addAttackRow() {
+function addAttackRow(event) {
+  if (event) event.preventDefault();
   const tbody = document.getElementById("attacks-table-body");
   const newRow = document.createElement("tr");
   newRow.innerHTML = `
@@ -124,7 +125,8 @@ function addAttackRow() {
   tbody.appendChild(newRow);
 }
 
-function addLifePathRow() {
+function addLifePathRow(event) {
+  if (event) event.preventDefault();
   const tbody = document.getElementById("lifepath-table-body");
   const newRow = document.createElement("tr");
   newRow.innerHTML = `
@@ -136,8 +138,15 @@ function addLifePathRow() {
 }
 
 function setupTableListeners() {
-  document.getElementById("add-attack-row").addEventListener("click", addAttackRow);
-  document.getElementById("add-lifepath-row").addEventListener("click", addLifePathRow);
+  const addAttackBtn = document.getElementById("add-attack-row");
+  const addLifePathBtn = document.getElementById("add-lifepath-row");
+  
+  if (addAttackBtn) {
+    addAttackBtn.addEventListener("click", addAttackRow);
+  }
+  if (addLifePathBtn) {
+    addLifePathBtn.addEventListener("click", addLifePathRow);
+  }
 }
 
 function setupFormListeners() {
