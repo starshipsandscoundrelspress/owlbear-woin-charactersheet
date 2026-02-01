@@ -2,12 +2,12 @@
   "id": "theodore.woin.sheet",
   "name": "W.O.I.N. Character Sheet",
   "version": "1.0.0",
-  "icon": "/icon.svg",
+  "icon": "/public/icon.svg",
   "author": "starships and scoundrels press"
   "description": "A What's OLD is NEW character sheet for Owlbear Rodeo",
   "action": {
     "title": "W.O.I.N. Character Sheet",
-    "icon": "/icon.svg",
+    "icon": "/public/icon.svg",
     "popover": "/",
     "height": 1200,
     "width": 700
