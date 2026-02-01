@@ -1,0 +1,133 @@
+:root {
+  --bg: #15171b;
+  --bg-alt: #1f2228;
+  --border: #2b2f36;
+  --accent: #f0c75e;
+  --text: #f5f5f5;
+  --muted: #9ca3af;
+  --danger: #f97373;
+  --radius: 4px;
+  --spacing: 0.4rem;
+  --font: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0.75rem;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 13px;
+}
+
+header {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+}
+
+h3 {
+  margin: 0.5rem 0 0.25rem;
+  font-size: 0.85rem;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+section {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.field-row {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.field-row label {
+  flex: 0 0 80px;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+input,
+textarea {
+  flex: 1;
+  background: #111318;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  padding: 0.25rem;
+  font-size: 0.8rem;
+}
+
+textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+#skills-text,
+#exploits-text,
+#gear-text {
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
+}
+
+#attributes .grid {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+.attr {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.storage-mode {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.warning {
+  font-size: 0.75rem;
+  color: var(--danger);
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+button#save {
+  background: var(--accent);
+  color: #111;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.3rem 0.75rem;
+  cursor: pointer;
+}
+
+.status {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
