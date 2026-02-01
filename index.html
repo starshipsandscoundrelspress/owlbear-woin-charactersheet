@@ -115,12 +115,6 @@
       <h3>Derived</h3>
       <div class="grid derived-grid">
         <div class="field-row">
-          <label>HEALTH</label><input id="health" type="number" min="0" />
-        </div>
-        <div class="field-row">
-          <label>SOAK</label><input id="soak" type="number" min="0" />
-        </div>
-        <div class="field-row">
           <label>INITIATIVE</label><input id="initiative" type="text" />
         </div>
         <div class="field-row">
@@ -133,7 +127,7 @@
           <label>ACTIONS</label><input id="actions" type="number" min="0" />
         </div>
         <div class="field-row">
-          <label>NAT Damage</label><input id="natural_damage" type="text" />
+          <label>NAT DAMAGE</label><input id="natural_damage" type="text" />
         </div>
         <div class="field-row">
           <label>POW POINTS</label><input id="pow_points" type="number" min="0" />
@@ -145,16 +139,22 @@
       <h3>Defenses</h3>
       <div class="grid defenses-grid">
         <div class="field-row">
-          <label>Melee</label><input id="melee" type="number" />
+          <label>HEALTH</label><input id="health" type="number" min="0" />
         </div>
         <div class="field-row">
-          <label>Ranged</label><input id="ranged" type="number" />
+          <label>SOAK</label><input id="soak" type="number" min="0" />
         </div>
         <div class="field-row">
-          <label>Mental</label><input id="mental" type="number" />
+          <label>MELEE</label><input id="melee" type="number" />
         </div>
         <div class="field-row">
-          <label>Vital</label><input id="vital" type="number" />
+          <label>RANGED</label><input id="ranged" type="number" />
+        </div>
+        <div class="field-row">
+          <label>MENTAL</label><input id="mental" type="number" />
+        </div>
+        <div class="field-row">
+          <label>VITAL</label><input id="vital" type="number" />
         </div>
       </div>
     </section>
@@ -163,16 +163,16 @@
       <h3>Movement</h3>
       <div class="grid movement-grid">
         <div class="field-row">
-          <label>Walk</label><input id="speed" type="number" />
+          <label>WALK</label><input id="speed" type="number" />
         </div>
         <div class="field-row">
-          <label>Run</label><input id="climb" type="number" />
+          <label>RUN</label><input id="climb" type="number" />
         </div>
         <div class="field-row">
-          <label>Swim</label><input id="swim" type="number" />
+          <label>SWIM</label><input id="swim" type="number" />
         </div>
         <div class="field-row">
-          <label>Fly</label><input id="jump" type="number" />
+          <label>FLY</label><input id="jump" type="number" />
         </div>
       </div>
     </section>
@@ -216,13 +216,19 @@
           </tr>
         </tbody>
       </table>
+      <button id="add-attack-row" class="add-row-btn">Add Row</button>
     </section>
 
     <section id="gear">
       <h3>Gear</h3>
       <textarea id="gear-text"></textarea>
-      <div class="field-row">
-        <label>Wealth</label><input id="wealth" type="text" />
+      <div class="grid gear-grid">
+        <div class="field-row">
+          <label>Experience Points</label><input id="experience_points" type="text" />
+        </div>
+        <div class="field-row">
+          <label>Wealth</label><input id="wealth" type="text" />
+        </div>
       </div>
     </section>
 
@@ -254,6 +260,10 @@
           </tr>
         </tbody>
       </table>
+      <button id="add-lifepath-row" class="add-row-btn">Add Row</button>
+      <div class="field-row">
+        <label>Current Age</label><input id="current_age" type="number" min="0"/>
+      </div>
     </section>
 
     <footer>

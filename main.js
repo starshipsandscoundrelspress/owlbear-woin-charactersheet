@@ -111,6 +111,35 @@ function showStatus(msg, timeout = 1200) {
   }, timeout);
 }
 
+function addAttackRow() {
+  const tbody = document.getElementById("attacks-table-body");
+  const newRow = document.createElement("tr");
+  newRow.innerHTML = `
+    <td><input type="text" class="weapon" /></td>
+    <td><input type="text" class="attack" /></td>
+    <td><input type="text" class="damage" /></td>
+    <td><input type="text" class="range" /></td>
+    <td><input type="text" class="notes" /></td>
+  `;
+  tbody.appendChild(newRow);
+}
+
+function addLifePathRow() {
+  const tbody = document.getElementById("lifepath-table-body");
+  const newRow = document.createElement("tr");
+  newRow.innerHTML = `
+    <td><input type="text" class="paths" /></td>
+    <td><input type="text" class="grades" /></td>
+    <td><input type="text" class="age" /></td>
+  `;
+  tbody.appendChild(newRow);
+}
+
+function setupTableListeners() {
+  document.getElementById("add-attack-row").addEventListener("click", addAttackRow);
+  document.getElementById("add-lifepath-row").addEventListener("click", addLifePathRow);
+}
+
 function setupFormListeners() {
   const inputs = document.querySelectorAll("input, textarea");
 
@@ -158,6 +187,8 @@ function setupFormListeners() {
       await refreshStorageMode();
     });
   });
+
+  setupTableListeners();
 }
 
 async function refreshStorageMode() {
