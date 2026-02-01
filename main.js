@@ -1,5 +1,17 @@
-import OBR from "https://cdn.jsdelivr.net/npm/@owlbear-rodeo/sdk@2.0.0/+esm";
 import "./style.css";
+
+let OBR = null;
+
+// Try to load OBR, but don't fail if it can't
+try {
+  const OBRModule = await import("https://cdn.jsdelivr.net/npm/@owlbear-rodeo/sdk@2.0.0/+esm").catch(err => {
+    console.warn("OBR SDK failed to load:", err);
+    return null;
+  });
+  OBR = OBRModule?.default || OBRModule;
+} catch (err) {
+  console.warn("OBR SDK not available:", err);
+}
 
 const META_KEY = "theodore.woin.sheet";
 
@@ -228,6 +240,8 @@ async function handleSelectionChange() {
 }
 
 function setupOBRListeners() {
+  if (!OBR) return console.warn("OBR not available, skipping OBR listeners");
+  
   OBR.scene.items.onSelectionChange(handleSelectionChange);
 
   OBR.scene.items.onChange(async () => {
@@ -240,11 +254,27 @@ function setupOBRListeners() {
   });
 }
 
-OBR.onReady(async () => {
+async function initializeApp() {
   isReady = true;
   setupFormListeners();
-  setupOBRListeners();
-  await handleSelectionChange();
-});
+  
+  if (OBR) {
+    setupOBRListeners();
+    await handleSelectionChange();
+  } else {
+    console.warn("App running in standalone mode without OBR");
+  }
+}
+
+if (OBR && OBR.onReady) {
+  OBR.onReady(initializeApp);
+} else {
+  // If OBR isn't available, initialize immediately when DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeApp);
+  } else {
+    initializeApp();
+  }
+}
 
 console.log("W.O.I.N. Character Sheet loaded");
