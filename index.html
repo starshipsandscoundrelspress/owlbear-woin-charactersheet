@@ -36,10 +36,6 @@
         <input id="species" type="text" />
       </div>
       <div class="field-row">
-        <label>Career</label>
-        <input id="career" type="text" />
-      </div>
-      <div class="field-row">
         <label>Grade</label>
         <input id="grade" type="number" min="0" />
       </div>
@@ -124,14 +120,14 @@
         </div>
         <div class="field-row">
           <label>INITIATIVE</label>
-          <input id="initiative" type="number" readonly />
+          <input id="initiative" type="text" />
         </div>
       </div>
     </section>
 
     <section id="defenses">
       <h3>Defenses</h3>
-      <div class="grid">
+      <div class="grid defenses-grid">
         <div class="field-row">
           <label>Melee</label><input id="melee" type="number" />
         </div>
@@ -157,9 +153,70 @@
       <textarea id="exploits-text"></textarea>
     </section>
 
+    <section id="attacks">
+      <h3>Attacks</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Weapon</th>
+            <th>Attack</th>
+            <th>Damage</th>
+            <th>Range</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody id="attacks-table-body">
+          <tr>
+            <td><input type="text" class="weapon" /></td>
+            <td><input type="text" class="attack" /></td>
+            <td><input type="text" class="damage" /></td>
+            <td><input type="text" class="range" /></td>
+            <td><input type="text" class="notes" /></td>
+          </tr>
+          <tr>
+            <td><input type="text" class="weapon" /></td>
+            <td><input type="text" class="attack" /></td>
+            <td><input type="text" class="damage" /></td>
+            <td><input type="text" class="range" /></td>
+            <td><input type="text" class="notes" /></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
     <section id="gear">
       <h3>Gear</h3>
       <textarea id="gear-text"></textarea>
+    </section>
+
+    <section id="lifepath">
+      <h3>Life Path</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Paths</th>
+            <th>Grades</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody id="lifepath-table-body">
+          <tr>
+            <td><input type="text" class="paths" /></td>
+            <td><input type="text" class="grades" /></td>
+            <td><input type="text" class="age" /></td>
+          </tr>
+          <tr>
+            <td><input type="text" class="paths" /></td>
+            <td><input type="text" class="grades" /></td>
+            <td><input type="text" class="age" /></td>
+          </tr>
+          <tr>
+            <td><input type="text" class="paths" /></td>
+            <td><input type="text" class="grades" /></td>
+            <td><input type="text" class="age" /></td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
     <footer>

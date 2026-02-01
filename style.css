@@ -89,6 +89,10 @@ textarea {
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 }
 
+.defenses-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .attr {
   display: flex;
   flex-direction: column;
@@ -130,4 +134,34 @@ button#save {
 .status {
   font-size: 0.75rem;
   color: var(--muted);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.4rem;
+}
+
+.data-table th {
+  background: #111318;
+  border: 1px solid var(--border);
+  padding: 0.4rem;
+  text-align: left;
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.data-table td {
+  border: 1px solid var(--border);
+  padding: 0.25rem;
+}
+
+.data-table input {
+  width: 100%;
+  margin: 0;
+  padding: 0.25rem;
+  border: none;
+  background: #111318;
+  color: var(--text);
 }
